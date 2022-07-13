@@ -117,6 +117,6 @@ func MapUpdateValues[K comparable, V any, R any](in map[K]V, iteratee func(K, V)
 	for k, v := range in {
 		result[k] = iteratee(k, v)
 	}
-	
+
 	return result
 }

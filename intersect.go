@@ -8,3 +8,9 @@ func Contains[T comparable](collection []T, element T) bool {
 	}
 	return false
 }
+
+// Empty returns an empty value.
+func Empty[T any]() T {
+	var t T
+	return t
+}
