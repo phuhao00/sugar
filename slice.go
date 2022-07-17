@@ -1,11 +1,13 @@
 package sugar
 
-func SliceFileter[V any](collection []V, fileter func(V, int) bool) []V {
+import "golang.org/x/exp/constraints"
+
+func SliceFiltrate[V any](collection []V, filtrate func(V, int) bool) []V {
 
 	result := []V{}
 
 	for i, v := range collection {
-		if fileter(v, i) {
+		if filtrate(v, i) {
 			result = append(result, v)
 		}
 	}
@@ -47,4 +49,25 @@ func SliceGroupBy[T any, U comparable](collection []T, iteratee func(T) U) map[U
 		result[key] = append(result[key], item)
 	}
 	return result
+}
+
+//CheckInSlice  check value in slice
+func CheckInSlice[T constraints.Ordered](a T, s []T) bool {
+	for _, val := range s {
+		if a == val {
+			return true
+		}
+	}
+	return false
+}
+
+//DelOneInSlice  delete one element of slice  left->right
+func DelOneInSlice[T constraints.Ordered](a T, old []T) (new []T) {
+	for i, val := range old {
+		if a == val {
+			new = append(old[:i], old[i+1:]...)
+			return
+		}
+	}
+	return old
 }

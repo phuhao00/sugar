@@ -20,11 +20,11 @@ func Values[K comparable, V any](in map[K]V) []V {
 	return result
 }
 
-func FiltrateBy[K comparable, V any](in map[K]V, fileter func(K, V) bool) map[K]V {
+func FiltrateBy[K comparable, V any](in map[K]V, filtrate func(K, V) bool) map[K]V {
 	result := map[K]V{}
 
 	for k, v := range in {
-		if fileter(k, v) {
+		if filtrate(k, v) {
 			result[k] = v
 		}
 	}
