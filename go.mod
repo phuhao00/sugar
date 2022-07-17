@@ -1,4 +1,4 @@
-module sugar
+module github.com/phuhao00/sugar
 
 go 1.18
 
