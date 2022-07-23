@@ -13,6 +13,7 @@ func WaitSignal(fn func(sig os.Signal) bool) {
 
 	for sig := range ch {
 		if !fn(sig) {
+			close(ch)
 			break
 		}
 	}
