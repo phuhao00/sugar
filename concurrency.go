@@ -31,3 +31,15 @@ func Async[A any](f func() A) chan A {
 
 	return ch
 }
+
+// FanIn ...
+func FanIn(in ...chan any) <-chan any {
+	out := make(chan any)
+	for i := range in {
+		tmp := in[i]
+		go func() {
+			out <- tmp
+		}()
+	}
+	return out
+}
