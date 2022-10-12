@@ -43,3 +43,33 @@ func FanIn(in ...chan any) <-chan any {
 	}
 	return out
 }
+
+func FanOut(ch <-chan any, n int) []chan any {
+	cs := make([]chan any, 0, n)
+	for i := 0; i < n; i++ {
+		cs = append(cs, make(chan any))
+	}
+	distributeToChannels := func(ch <-chan any, cs []chan any) {
+		defer func(cs []chan any) {
+			for _, c := range cs {
+				close(c)
+			}
+		}(cs)
+
+		for {
+			for _, c := range cs {
+				select {
+				case val, ok := <-ch:
+					if !ok {
+						return
+					}
+
+					c <- val
+				}
+			}
+		}
+	}
+	go distributeToChannels(ch, cs)
+
+	return cs
+}
