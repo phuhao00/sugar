@@ -13,7 +13,7 @@
 ## 🛠 安装
 
 ```bash
-go get github.com/phuhao00/sugar
+go get github.com/phuhao00/sugar/v2
 ```
 
 要求 Go 1.23 或更高版本。
@@ -21,7 +21,7 @@ go get github.com/phuhao00/sugar
 ## 📚 快速开始
 
 ```go
-import "github.com/phuhao00/sugar"
+import "github.com/phuhao00/sugar/v2"
 
 // 切片操作
 nums := []int{1, 2, 3, 4, 5}

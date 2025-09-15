@@ -1,4 +1,4 @@
-module github.com/phuhao00/sugar
+module github.com/phuhao00/sugar/v2
 
 go 1.23
 

@@ -138,9 +138,20 @@ BenchmarkMapPerformance-22    850406    1670 ns/op    8192 B/op    1 allocs/op
 - 基础类型操作保持兼容
 
 **升级指南**
+- 更新导入路径：`github.com/phuhao00/sugar` → `github.com/phuhao00/sugar/v2`
 - 将 `SliceXxx` 调用替换为对应的新函数名
 - 更新 go.mod 要求 Go 1.23+
 - 检查类型约束是否需要调整
+
+**安装 v2 版本**
+```bash
+go get github.com/phuhao00/sugar/v2
+```
+
+**导入方式**
+```go
+import "github.com/phuhao00/sugar/v2"
+```
 
 ### 📊 性能对比
 
